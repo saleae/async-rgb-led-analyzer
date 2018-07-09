@@ -27,3 +27,5 @@ if(MSVC)
 else()
     install(TARGETS async_rgb_led_analyzer LIBRARY DESTINATION ".")
 endif()
+
+set_post_build_destination(async_rgb_led_analyzer)
