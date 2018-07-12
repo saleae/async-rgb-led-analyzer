@@ -10,7 +10,7 @@
 class AsyncRgbLedAnalyzerSettings;
 class AsyncRgbLedAnalyzerResults;
 
-class ANALYZER_EXPORT AsyncRgbLedAnalyzer : public Analyzer2
+class AsyncRgbLedAnalyzer : public Analyzer2
 {
     public:
         AsyncRgbLedAnalyzer();
@@ -71,9 +71,9 @@ class ANALYZER_EXPORT AsyncRgbLedAnalyzer : public Analyzer2
 };
 
 extern "C" {
-    ANALYZER_EXPORT const char* __cdecl GetAnalyzerName();
-    ANALYZER_EXPORT Analyzer* __cdecl CreateAnalyzer( );
-    ANALYZER_EXPORT void __cdecl DestroyAnalyzer( Analyzer* analyzer );
+    ANALYZER_PLUGIN_EXPORT const char* __cdecl GetAnalyzerName();
+    ANALYZER_PLUGIN_EXPORT Analyzer* __cdecl CreateAnalyzer( );
+    ANALYZER_PLUGIN_EXPORT void __cdecl DestroyAnalyzer( Analyzer* analyzer );
 }
 
 #endif //ASYNCRGBLED_ANALYZER_H
