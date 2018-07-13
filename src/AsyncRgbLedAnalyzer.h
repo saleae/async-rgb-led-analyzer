@@ -10,7 +10,7 @@
 class AsyncRgbLedAnalyzerSettings;
 class AsyncRgbLedAnalyzerResults;
 
-class ANALYZER_EXPORT AsyncRgbLedAnalyzer : public Analyzer2
+class AsyncRgbLedAnalyzer : public Analyzer2
 {
     public:
         AsyncRgbLedAnalyzer();
