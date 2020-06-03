@@ -69,6 +69,14 @@ void AsyncRgbLedAnalyzer::WorkerThread()
                 frame.mData1 = result.mRGB.ConvertToU64();
                 frame.mData2 = frameInPacketIndex++;
                 mResults->AddFrame( frame );
+
+                FrameV2 frame_v2;
+                frame_v2.AddInteger( "index", frame.mData2 );
+                frame_v2.AddInteger( "red", result.mRGB.red );
+                frame_v2.AddInteger( "green", result.mRGB.green );
+                frame_v2.AddInteger( "blue", result.mRGB.blue );
+                mResults->AddFrameV2( frame_v2, "pixel", frame.mStartingSampleInclusive, frame.mEndingSampleInclusive );
+
                 mResults->CommitResults();
             }
             else
