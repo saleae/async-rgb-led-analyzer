@@ -71,8 +71,8 @@ void AsyncRgbLedAnalyzerSettings::InitControllerData()
             true,
             {
                 // high-speed times
-                {{175_ns, 250_ns, 325_ns}, {925_ns, 1000_ns, 1075_ns}},      // 0-bit times
-                {{525_ns, 600_ns, 675_ns}, {1225_ns, 1300_ns, 1375_ns}}      // 1-bit times
+                {{100_ns, 250_ns, 400_ns}, {850_ns, 1000_ns, 1150_ns}},      // 0-bit times
+                {{450_ns, 600_ns, 750_ns}, {500_ns, 650_ns, 800_ns}}      // 1-bit times
             },
             LAYOUT_RGB
         },
