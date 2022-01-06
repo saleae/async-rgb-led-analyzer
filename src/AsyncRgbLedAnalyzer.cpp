@@ -10,6 +10,7 @@
 AsyncRgbLedAnalyzer::AsyncRgbLedAnalyzer() : Analyzer2(), mSettings( new AsyncRgbLedAnalyzerSettings )
 {
     SetAnalyzerSettings( mSettings.get() );
+    UseFrameV2();
 }
 
 AsyncRgbLedAnalyzer::~AsyncRgbLedAnalyzer()
