@@ -188,6 +188,22 @@ void AsyncRgbLedAnalyzerSettings::InitControllerData()
           false,
           { {}, {} },
           LAYOUT_RGB },
+
+        // https://cdn-shop.adafruit.com/product-files/1138/SK6812+LED+datasheet+.pdf
+        { "SK6812 RGBW",
+          "24-bit RGBW integrated light-source",
+          8,
+          4,
+          { 50_us, 50_us, 50_us },
+          {
+              // low-speed times
+              { { 200_ns, 400_ns, 550_ns }, { 700_ns, 850_ns, 1050_ns } }, // 0-bit times
+              { { 650_ns, 800_ns, 1050_ns }, { 200_ns, 450_ns, 600_ns } }, // 1-bit times
+          },
+          false,
+          { {}, {} },
+          LAYOUT_GRB },
+
     };
 }
 
