@@ -27,7 +27,7 @@ class AsyncRgbLedAnalyzerResults : public AnalyzerResults
     AsyncRgbLedAnalyzer* mAnalyzer = nullptr;
 
   private:
-    void GenerateRGBStrings( const RGBValue& rgb, DisplayBase base, size_t bufSize, char* redBuf, char* greenBuff, char* blueBuf );
+    void GenerateRGBStrings( const RGBValue& rgb, DisplayBase base, size_t bufSize, char* redBuf, char* greenBuff, char* blueBuf, char* whiteBuf );
 };
 
 #endif // ASYNCRGBLED_ANALYZER_RESULTS
