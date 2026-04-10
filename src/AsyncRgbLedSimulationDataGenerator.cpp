@@ -137,5 +137,5 @@ RGBValue AsyncRgbLedSimulationDataGenerator::RandomRGBValue() const
     const U16 red = rand() % mMaximumChannelValue;
     const U16 green = rand() % mMaximumChannelValue;
     const U16 blue = rand() % mMaximumChannelValue;
-    return RGBValue{ red, green, blue };
+    return RGBValue{ red, green, blue, 0 };
 }

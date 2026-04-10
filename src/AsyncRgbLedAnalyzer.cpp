@@ -27,6 +27,7 @@ void AsyncRgbLedAnalyzer::SetupResults()
 
 void AsyncRgbLedAnalyzer::WorkerThread()
 {
+    ColorLayout layout = mSettings->GetColorLayout();
     mSampleRateHz = GetSampleRate();
     mChannelData = GetAnalyzerChannelData( mSettings->mInputChannel );
 
@@ -76,6 +77,9 @@ void AsyncRgbLedAnalyzer::WorkerThread()
                 frame_v2.AddInteger( "red", result.mRGB.red );
                 frame_v2.AddInteger( "green", result.mRGB.green );
                 frame_v2.AddInteger( "blue", result.mRGB.blue );
+                if (layout == LAYOUT_GRBW) {
+                    frame_v2.AddInteger( "white", result.mRGB.white );
+                }
                 mResults->AddFrameV2( frame_v2, "pixel", frame.mStartingSampleInclusive, frame.mEndingSampleInclusive );
 
                 mResults->CommitResults();
@@ -129,13 +133,15 @@ void AsyncRgbLedAnalyzer::SynchronizeToReset()
 auto AsyncRgbLedAnalyzer::ReadRGBTriple() -> RGBResult
 {
     const U8 bitSize = mSettings->BitSize();
-    U16 channels[ 3 ] = { 0, 0, 0 };
+    const U8 channelCount = mSettings->LEDChannelCount();
+
+    U16 channels[ channelCount ] = { 0 };
     RGBResult result;
 
     DataBuilder builder;
     int channel = 0;
 
-    for( ; channel < 3; )
+    for( ; channel < channelCount; )
     {
         U64 value = 0;
         builder.Reset( &value, AnalyzerEnums::MsbFirst, bitSize );
@@ -174,7 +180,7 @@ auto AsyncRgbLedAnalyzer::ReadRGBTriple() -> RGBResult
         }
     }
 
-    if( channel == 3 )
+    if( channel == channelCount )
     {
         // we saw three complete channels, we can use this
         result.mRGB = RGBValue::CreateFromControllerOrder( mSettings->GetColorLayout(), channels );

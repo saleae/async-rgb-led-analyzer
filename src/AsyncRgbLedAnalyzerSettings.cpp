@@ -188,6 +188,20 @@ void AsyncRgbLedAnalyzerSettings::InitControllerData()
           false,
           { {}, {} },
           LAYOUT_RGB },
+
+        { "LY3535",
+          "Ly3535 GRBW controller",
+          8,
+          4,
+          { 80_us, 80_us, 1.0 },
+          {
+              // low-speed times
+              { { 250_ns, 300_ns, 350_ns }, { 500_ns, 900_ns, 10_us } }, // 0-bit times
+              { { 500_ns, 900_ns, 10_us }, { 250_ns, 300_ns, 10_us } },   // 1-bit times
+          },
+          false,
+          { {}, {} },
+          LAYOUT_GRBW },
     };
 }
 

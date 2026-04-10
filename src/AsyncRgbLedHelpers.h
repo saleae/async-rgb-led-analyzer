@@ -6,7 +6,8 @@
 enum ColorLayout
 {
     LAYOUT_RGB = 0,
-    LAYOUT_GRB
+    LAYOUT_GRB,
+    LAYOUT_GRBW,
 };
 
 struct RGBValue
@@ -14,7 +15,7 @@ struct RGBValue
     RGBValue() = default;
     ~RGBValue() = default;
 
-    RGBValue( U16 r, U16 g, U16 b ) : red( r ), green( g ), blue( b )
+    RGBValue( U16 r, U16 g, U16 b, U16 w ) : red( r ), green( g ), blue( b ), white( w )
     {
         ;
     }
@@ -22,7 +23,7 @@ struct RGBValue
     U16 red = 0;
     U16 green = 0;
     U16 blue = 0;
-    U16 padding = 0; // no alpha in LED colors
+    U16 white = 0;
 
     void ConvertToControllerOrder( ColorLayout layout, U16* values ) const;
 
